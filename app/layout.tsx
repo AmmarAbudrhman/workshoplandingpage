@@ -29,12 +29,10 @@ export const metadata: Metadata = {
     "إدارة المساجد",
     "تعليم القرآن",
   ],
-  authors: [{ name: "جدارة", url: "https://jadara.ly" }],
-  creator: "جدارة",
+  creator: "فريق نور",
   openGraph: {
     type: "website",
     locale: "ar_LY",
-    url: "https://nour.ly",
     siteName: "نور",
     title: "نور — إدارة ذكية لحلقات القرآن",
     description:
@@ -54,17 +52,6 @@ export const metadata: Metadata = {
     description: "الارتقاء بإدارة مراكز تحفيظ القرآن من خلال تقنيات حديثة.",
     images: ["/og-image.png"],
     creator: "@AlFalah7Center",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
   },
   category: "technology",
 };
@@ -89,9 +76,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <main className="flex-1">
-            {children}
-          </main>
+          <main className="flex-1">{children}</main>
           <Footer />
           <Toaster />
         </ThemeProvider>
