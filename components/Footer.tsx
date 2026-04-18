@@ -66,7 +66,7 @@ export default function Footer() {
                 },
                 {
                   icon: Whatsapp,
-                  href: "https://wa.me/96783049625",
+                  href: "https://wa.me/967783049625",
                   color: "hover:bg-green-600",
                 },
               ].map((social, i) => (
@@ -112,7 +112,7 @@ export default function Footer() {
             </h4>
             <div className="space-y-5 text-sm ">
               <a
-                href="tel:+96783049625"
+                href="tel:+967783049625"
                 className="group flex text-right items-center flex-row-reverse  gap-4 p-3 rounded-2xl bg-muted/30 transition-all hover:bg-muted/50 border border-transparent hover:border-primary/20"
                 dir="ltr"
               >
@@ -124,12 +124,12 @@ export default function Footer() {
                     اتصل بنا
                   </span>
                   <span className="font-semibold text-foreground">
-                    +967 83049625
+                    +967 783049625
                   </span>
                 </div>
               </a>
 
-              <a
+              {/* <a
                 href="https://chat.whatsapp.com/LPcTHk9saM6HJR1mpfCDRF"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -150,7 +150,7 @@ export default function Footer() {
                   size={14}
                   className="mr-auto opacity-0 transition-opacity group-hover:opacity-40"
                 />
-              </a>
+              </a> */}
             </div>
           </div>
         </div>
