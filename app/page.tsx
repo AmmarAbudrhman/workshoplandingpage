@@ -1,5 +1,25 @@
-import SharedCentersPage from "@/components/SharedCentersPage";
+import {
+  Hero,
+  About,
+  Stats,
+  Centers,
+  Features,
+  Journey,
+  Team,
+  Gallery,
+} from "@/components/SharedCentersPage";
 
 export default function Home() {
-  return <SharedCentersPage />;
+  return (
+    <div className="min-h-screen bg-background pt-20">
+      <Hero />
+      <About />
+      <Stats />
+      <Centers />
+      <Features />
+      <Journey />
+      <Team />
+      <Gallery />
+    </div>
+  );
 }

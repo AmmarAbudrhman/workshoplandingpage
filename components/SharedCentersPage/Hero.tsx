@@ -1,0 +1,54 @@
+"use client";
+
+import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
+
+const Hero = () => {
+  return (
+    <section
+      id="hero"
+      className="relative py-24 text-center overflow-hidden px-6"
+    >
+      <div className="absolute top-0 left-0 w-96 h-96 bg-primary/5 blur-3xl rounded-full"></div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-secondary/10 blur-3xl rounded-full"></div>
+
+      <h1 className="text-4xl md:text-6xl font-extrabold text-foreground mb-6 leading-tight animate-in fade-in slide-in-from-bottom-8 duration-700">
+        منصة <span className="text-primary"> نور</span> — إدارة ذكية لحلقات
+        القرآن
+      </h1>
+
+      <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-10 animate-in fade-in slide-in-from-bottom-8 delay-200 duration-700">
+        منصة رقمية تساعد المراكز التعليمية على إدارة الحلقات والطلاب والمعلمين
+        بكفاءة عالية مع تقارير متقدمة.
+      </p>
+
+      <div className="flex flex-wrap justify-center gap-4 animate-in fade-in slide-in-from-bottom-8 delay-300 duration-700">
+        <Button
+          size="lg"
+          className="bg-primary hover:bg-primary/90 text-primary-foreground transition-all duration-300 shadow-lg shadow-primary/20 cursor-pointer"
+          onClick={() =>
+            document
+              .getElementById("centers")
+              ?.scrollIntoView({ behavior: "smooth" })
+          }
+        >
+          عرض المراكز
+        </Button>
+        <Button
+          size="lg"
+          variant="outline"
+          className="border-primary text-primary hover:bg-primary/5 transition-all duration-300 cursor-pointer"
+          onClick={() =>
+            toast.info("هذه الميزة غير متوفرة حالياً", {
+              description: "ستكون متاحة في النسخة القادمة إن شاء الله",
+            })
+          }
+        >
+          طلب الانضمام
+        </Button>
+      </div>
+    </section>
+  );
+};
+
+export default Hero;
