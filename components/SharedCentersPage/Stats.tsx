@@ -1,30 +1,30 @@
 "use client";
 
 import { Building2, Users2, GraduationCap, BookOpen } from "lucide-react";
-import { useGetCenters } from "@/hooks/useCenter";
+import { useGetStats } from "@/hooks/useCenter";
 
 const Stats = () => {
-  const { data: centersData } = useGetCenters();
+  const { data: statsData, isLoading } = useGetStats();
 
   const stats = [
     {
       label: "مراكز نشطة",
-      value: centersData?.pagination.totalItems.toString() || "...",
+      value: statsData?.data.centersCount.toString() || "0",
       icon: <Building2 className="w-6 h-6" />,
     },
     {
       label: "طالب وطالبة",
-      value: "+200",
+      value: statsData?.data.studentsCount.toString() || "0",
       icon: <Users2 className="w-6 h-6" />,
     },
     {
       label: "معلم ومعلمة",
-      value: "+20",
+      value: statsData?.data.teachersCount.toString() || "0",
       icon: <GraduationCap className="w-6 h-6" />,
     },
     {
-      label: "سجل متابعة",
-      value: "+1000",
+      label: "خاتم وخاتمة",
+      value: statsData?.data.memorizersCount.toString() || "0",
       icon: <BookOpen className="w-6 h-6" />,
     },
   ];
@@ -32,7 +32,7 @@ const Stats = () => {
   return (
     <section id="stats" className="py-24 px-6">
       <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-6 text-center">
-        الأحصائيات
+        الإحصائيات
       </h2>
       <div className="w-20 h-1.5 bg-primary mx-auto rounded-full mb-16"></div>
 
@@ -46,7 +46,7 @@ const Stats = () => {
               {stat.icon}
             </div>
             <h3 className="text-3xl font-bold text-foreground mb-1">
-              {stat.value}
+              {isLoading ? "..." : stat.value}
             </h3>
             <p className="text-muted-foreground font-medium">{stat.label}</p>
           </div>

@@ -55,6 +55,11 @@ const Team = () => {
       role: "رياكت",
       description: "تطوير واجهات المستخدم",
     },
+    {
+      name: "عبد الكريم باوزير",
+      role: "UI/UX",
+      description: "تصميم واجهات المستخدم",
+    },
   ];
 
   return (

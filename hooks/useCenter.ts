@@ -1,15 +1,24 @@
 import api from "@/lib/axios";
 import { useQuery } from "@tanstack/react-query";
 type CentersResponse = {
-  data: Center[];
+  isSuccess: boolean;
+  statusCode: number;
+  message: string;
+  data: Data;
+  errors: string;
+};
+
+type Data = {
+  data: Daum[];
   pagination: Pagination;
 };
 
-type Center = {
-  id: number;
+type Daum = {
   name: string;
-  managerName: string;
-  createdAt: string;
+  description: string;
+  studentsCount: number;
+  teachersCount: number;
+  ceneterLogo: string;
 };
 
 type Pagination = {
@@ -23,12 +32,40 @@ type Pagination = {
   search: string;
   shift: string;
 };
-
-export const useGetCenters = () => {
+type Props = {
+  page?: number;
+  pageSize?: number;
+  search?: string;
+  shift?: string;
+};
+export const useGetCenters = (props?: Props) => {
   return useQuery<CentersResponse>({
-    queryKey: ["centers"],
+    queryKey: ["centers", props],
     queryFn: async () => {
-      const res = await api.get("/Center");
+      const res = await api.get("/Center/dashboard", { params: props });
+      return res.data;
+    },
+  });
+};
+
+type StatsResponse = {
+  isSuccess: boolean;
+  statusCode: number;
+  message: string;
+  data: {
+    studentsCount: number;
+    teachersCount: number;
+    memorizersCount: number;
+    centersCount: number;
+  };
+  errors: string;
+};
+
+export const useGetStats = () => {
+  return useQuery<StatsResponse>({
+    queryKey: ["stats"],
+    queryFn: async () => {
+      const res = await api.get("/dashboards/all centers");
       return res.data;
     },
   });
