@@ -65,7 +65,7 @@ export const useGetStats = () => {
   return useQuery<StatsResponse>({
     queryKey: ["stats"],
     queryFn: async () => {
-      const res = await api.get("/dashboards/all centers");
+      const res = await api.get("/dashboards/all-centers");
       return res.data;
     },
   });
