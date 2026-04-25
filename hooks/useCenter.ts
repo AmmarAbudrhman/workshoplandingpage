@@ -1,5 +1,6 @@
 import api from "@/lib/axios";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+
 type CentersResponse = {
   isSuccess: boolean;
   statusCode: number;
@@ -32,12 +33,14 @@ type Pagination = {
   search: string;
   shift: string;
 };
+
 type Props = {
   page?: number;
   pageSize?: number;
   search?: string;
   shift?: string;
 };
+
 export const useGetCenters = (props?: Props) => {
   return useQuery<CentersResponse>({
     queryKey: ["centers", props],
@@ -67,6 +70,23 @@ export const useGetStats = () => {
     queryFn: async () => {
       const res = await api.get("/dashboards/all-centers");
       return res.data;
+    },
+  });
+};
+
+export const useCreateCenter = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: async (formData: FormData) => {
+      const res = await api.post("/Center", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      return res.data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["centers"] });
     },
   });
 };

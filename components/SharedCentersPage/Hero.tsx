@@ -1,7 +1,6 @@
 "use client";
-
-import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import { JoinCenterDialog } from "@/components/JoinCenterDialog";
 
 const Hero = () => {
   return (
@@ -34,18 +33,7 @@ const Hero = () => {
         >
           عرض المراكز
         </Button>
-        <Button
-          size="lg"
-          variant="outline"
-          className="border-primary text-primary hover:bg-primary/5 transition-all duration-300 cursor-pointer"
-          onClick={() =>
-            toast.info("هذه الميزة غير متوفرة حالياً", {
-              description: "ستكون متاحة في النسخة القادمة إن شاء الله",
-            })
-          }
-        >
-          طلب الانضمام
-        </Button>
+        <JoinCenterDialog />
       </div>
     </section>
   );
