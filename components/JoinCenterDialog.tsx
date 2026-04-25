@@ -23,7 +23,11 @@ const centerSchema = z.object({
   CenterName: z.string().min(1, "اسم المركز مطلوب"),
   Subdomain: z.string().min(1, "النطاق الفرعي مطلوب"),
   PhoneNumber: z.string().optional(),
-  Email: z.string().email("بريد إلكتروني غير صالح"),
+  Email: z
+    .string()
+    .email("بريد إلكتروني غير صالح")
+    .optional()
+    .or(z.literal("")),
   ManagerName: z.string().min(1, "اسم المدير مطلوب"),
   Password: z.string().min(6, "كلمة المرور يجب أن تكون 6 أحرف على الأقل"),
   LogoImage: z.any().optional(),
@@ -80,15 +84,17 @@ export function JoinCenterDialog() {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger>
-        <Button
-          size="lg"
-          variant="outline"
-          className="border-primary text-primary hover:bg-primary/5 transition-all duration-300 cursor-pointer"
-        >
-          طلب الانضمام
-        </Button>
-      </DialogTrigger>
+      <DialogTrigger
+        render={
+          <Button
+            size="lg"
+            variant="outline"
+            className="border-primary text-primary hover:bg-primary/5 transition-all duration-300 cursor-pointer"
+          >
+            طلب الانضمام
+          </Button>
+        }
+      />
       <DialogContent className="sm:max-w-[500px] overflow-y-auto max-h-[90vh]">
         <DialogHeader>
           <DialogTitle className="text-right">طلب الانضمام</DialogTitle>
