@@ -90,15 +90,19 @@ export default function Footer() {
               المنصة
             </h4>
             <ul className="space-y-4 text-sm">
-              {["عن نور", "المميزات", "الاشتراكات"].map((link) => (
-                <li key={link}>
-                  <Link
-                    href="/"
+              {[
+                { name: "عن نور", href: "/#about" },
+                { name: "المميزات", href: "/#features" },
+                { name: "الاشتراكات", href: "/#hero" },
+              ].map((link) => (
+                <li key={link.name}>
+                  <a
+                    href={link.href}
                     className="group flex items-center text-muted-foreground transition-colors hover:text-primary"
                   >
                     <span className="h-1 w-0 bg-primary rounded-full transition-all group-hover:w-2 group-hover:ml-2" />
-                    {link}
-                  </Link>
+                    {link.name}
+                  </a>
                 </li>
               ))}
             </ul>
