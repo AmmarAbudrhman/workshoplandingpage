@@ -1,3 +1,6 @@
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+
 const Team = () => {
   const team = [
     {
@@ -59,26 +62,28 @@ const Team = () => {
           فريق العمل
         </h2>
 
-        <div className="w-28 h-1.5 bg-gradient-to-r from-primary-foreground to-secondary mx-auto rounded-full mt-4 mb-20"></div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-2 lg:grid-cols-3">
           {team.map((member, index) => (
-            <div
+            <Card
               key={index}
-              className="group p-8 bg-card border border-border rounded-3xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
+              className="group transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
             >
-              <h3 className="text-xl font-bold text-primary mb-1">
-                {member.name}
-              </h3>
-
-              <p className="text-primary/70 text-sm font-medium mb-3">
-                {member.role}
-              </p>
-
-              <p className="text-muted-foreground text-sm">
-                {member.description}
-              </p>
-            </div>
+              <CardHeader>
+                <CardTitle className="text-xl font-bold text-primary">
+                  {member.name}
+                </CardTitle>
+                <div>
+                  <Badge variant="secondary" className="font-medium">
+                    {member.role}
+                  </Badge>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">
+                  {member.description}
+                </p>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </div>

@@ -13,7 +13,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Field, FieldLabel, FieldError } from "@/components/ui/field";
+import { Field, FieldLabel, FieldError, FieldGroup } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useCreateCenter } from "@/hooks/useCenter";
@@ -104,134 +104,124 @@ export function JoinCenterDialog() {
         </DialogHeader>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="space-y-4 text-right"
+          className="flex flex-col gap-4 text-right"
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <FieldGroup>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <Controller
+                control={form.control}
+                name="CenterName"
+                render={({ field, fieldState }) => (
+                  <Field data-invalid={!!fieldState.error}>
+                    <FieldLabel>اسم المركز *</FieldLabel>
+                    <Input
+                      placeholder="مركز التقوى"
+                      {...field}
+                      className="text-right"
+                      aria-invalid={!!fieldState.error}
+                    />
+                    <FieldError errors={[fieldState.error]} />
+                  </Field>
+                )}
+              />
+              <Controller
+                control={form.control}
+                name="Subdomain"
+                render={({ field, fieldState }) => (
+                  <Field data-invalid={!!fieldState.error}>
+                    <FieldLabel>النطاق الفرعي *</FieldLabel>
+                    <Input
+                      placeholder="al-taqwa"
+                      {...field}
+                      className="text-right"
+                      aria-invalid={!!fieldState.error}
+                    />
+                    <FieldError errors={[fieldState.error]} />
+                  </Field>
+                )}
+              />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <Controller
+                control={form.control}
+                name="PhoneNumber"
+                render={({ field, fieldState }) => (
+                  <Field data-invalid={!!fieldState.error}>
+                    <FieldLabel>رقم الهاتف</FieldLabel>
+                    <Input
+                      placeholder="7xxxxxxxxx"
+                      {...field}
+                      className="text-right"
+                      aria-invalid={!!fieldState.error}
+                    />
+                    <FieldError errors={[fieldState.error]} />
+                  </Field>
+                )}
+              />
+              <Controller
+                control={form.control}
+                name="Email"
+                render={({ field, fieldState }) => (
+                  <Field data-invalid={!!fieldState.error}>
+                    <FieldLabel>البريد الإلكتروني</FieldLabel>
+                    <Input
+                      placeholder="example@mail.com"
+                      {...field}
+                      className="text-right"
+                      aria-invalid={!!fieldState.error}
+                    />
+                    <FieldError errors={[fieldState.error]} />
+                  </Field>
+                )}
+              />
+            </div>
+
             <Controller
               control={form.control}
-              name="CenterName"
+              name="ManagerName"
               render={({ field, fieldState }) => (
-                <Field
-                  className="flex flex-col gap-1.5"
-                  {...({ "data-invalid": !!fieldState.error } as any)}
-                >
-                  <FieldLabel>اسم المركز *</FieldLabel>
+                <Field data-invalid={!!fieldState.error}>
+                  <FieldLabel>اسم المدير *</FieldLabel>
                   <Input
-                    placeholder="مركز التقوى"
+                    placeholder="الاسم الكامل"
                     {...field}
                     className="text-right"
+                    aria-invalid={!!fieldState.error}
                   />
                   <FieldError errors={[fieldState.error]} />
                 </Field>
               )}
             />
+
             <Controller
               control={form.control}
-              name="Subdomain"
+              name="Password"
               render={({ field, fieldState }) => (
-                <Field
-                  className="flex flex-col gap-1.5"
-                  {...({ "data-invalid": !!fieldState.error } as any)}
-                >
-                  <FieldLabel>النطاق الفرعي *</FieldLabel>
+                <Field data-invalid={!!fieldState.error}>
+                  <FieldLabel>كلمة المرور *</FieldLabel>
                   <Input
-                    placeholder="al-taqwa"
+                    type="password"
+                    placeholder="******"
                     {...field}
                     className="text-right"
+                    aria-invalid={!!fieldState.error}
                   />
                   <FieldError errors={[fieldState.error]} />
                 </Field>
               )}
             />
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Controller
-              control={form.control}
-              name="PhoneNumber"
-              render={({ field, fieldState }) => (
-                <Field
-                  className="flex flex-col gap-1.5"
-                  {...({ "data-invalid": !!fieldState.error } as any)}
-                >
-                  <FieldLabel>رقم الهاتف</FieldLabel>
-                  <Input
-                    placeholder="7xxxxxxxxx"
-                    {...field}
-                    className="text-right"
-                  />
-                  <FieldError errors={[fieldState.error]} />
-                </Field>
-              )}
-            />
-            <Controller
-              control={form.control}
-              name="Email"
-              render={({ field, fieldState }) => (
-                <Field
-                  className="flex flex-col gap-1.5"
-                  {...({ "data-invalid": !!fieldState.error } as any)}
-                >
-                  <FieldLabel>البريد الإلكتروني</FieldLabel>
-                  <Input
-                    placeholder="example@mail.com"
-                    {...field}
-                    className="text-right"
-                  />
-                  <FieldError errors={[fieldState.error]} />
-                </Field>
-              )}
-            />
-          </div>
-
-          <Controller
-            control={form.control}
-            name="ManagerName"
-            render={({ field, fieldState }) => (
-              <Field
-                className="flex flex-col gap-1.5"
-                {...({ "data-invalid": !!fieldState.error } as any)}
-              >
-                <FieldLabel>اسم المدير *</FieldLabel>
-                <Input
-                  placeholder="الاسم الكامل"
-                  {...field}
-                  className="text-right"
-                />
-                <FieldError errors={[fieldState.error]} />
-              </Field>
-            )}
-          />
-
-          <Controller
-            control={form.control}
-            name="Password"
-            render={({ field, fieldState }) => (
-              <Field
-                className="flex flex-col gap-1.5"
-                {...({ "data-invalid": !!fieldState.error } as any)}
-              >
-                <FieldLabel>كلمة المرور *</FieldLabel>
-                <Input
-                  type="password"
-                  placeholder="******"
-                  {...field}
-                  className="text-right"
-                />
-                <FieldError errors={[fieldState.error]} />
-              </Field>
-            )}
-          />
-
-          <Field className="flex flex-col gap-1.5">
-            <FieldLabel>شعار المركز</FieldLabel>
-            <Input
-              type="file"
-              accept="image/*"
-              onChange={(e) => setFile(e.target.files?.[0] || null)}
-              className="text-right"
-            />
-          </Field>
+            <Field>
+              <FieldLabel>شعار المركز</FieldLabel>
+              <Input
+                type="file"
+                accept="image/*"
+                onChange={(e) => setFile(e.target.files?.[0] || null)}
+                className="text-right"
+              />
+            </Field>
+          </FieldGroup>
 
           <div className="flex justify-end gap-3 pt-4">
             <Button type="submit" disabled={isPending} className="w-full">
