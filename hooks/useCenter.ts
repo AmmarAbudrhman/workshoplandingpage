@@ -1,5 +1,7 @@
 import api from "@/lib/axios";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { AxiosError } from "axios";
+import { toast } from "sonner";
 
 type CentersResponse = {
   isSuccess: boolean;
@@ -87,6 +89,9 @@ export const useCreateCenter = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["centers"] });
+    },
+    onError: (error: AxiosError<{ message: string }>) => {
+      toast.error(error.response?.data?.message || "فشل إرسال الطلب");
     },
   });
 };

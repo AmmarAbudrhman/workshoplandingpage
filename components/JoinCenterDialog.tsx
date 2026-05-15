@@ -13,7 +13,12 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Field, FieldLabel, FieldError, FieldGroup } from "@/components/ui/field";
+import {
+  Field,
+  FieldLabel,
+  FieldError,
+  FieldGroup,
+} from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useCreateCenter } from "@/hooks/useCenter";
@@ -37,7 +42,8 @@ type CenterFormValues = z.infer<typeof centerSchema>;
 
 export function JoinCenterDialog() {
   const [open, setOpen] = useState(false);
-  const [file, setFile] = useState<File | null>(null);
+  const [fileLogo, setFileLogo] = useState<File | null>(null);
+  const [fileImage, setFileImage] = useState<File | null>(null);
 
   const form = useForm<CenterFormValues>({
     resolver: zodResolver(centerSchema),
@@ -61,8 +67,11 @@ export function JoinCenterDialog() {
     if (values.Email) formData.append("Email", values.Email);
     formData.append("ManagerName", values.ManagerName);
     formData.append("Password", values.Password);
-    if (file) {
-      formData.append("LogoImage", file);
+    if (fileLogo) {
+      formData.append("LogoImage", fileLogo);
+    }
+    if (fileImage) {
+      formData.append("Image", fileImage);
     }
 
     mutate(formData, {
@@ -71,13 +80,11 @@ export function JoinCenterDialog() {
           toast.success("تم إرسال طلبك بنجاح");
           setOpen(false);
           form.reset();
-          setFile(null);
+          setFileImage(null);
+          setFileLogo(null);
         } else {
           toast.error(data.message || "حدث خطأ ما");
         }
-      },
-      onError: (error: any) => {
-        toast.error(error.response?.data?.message || "فشل إرسال الطلب");
       },
     });
   };
@@ -217,7 +224,16 @@ export function JoinCenterDialog() {
               <Input
                 type="file"
                 accept="image/*"
-                onChange={(e) => setFile(e.target.files?.[0] || null)}
+                onChange={(e) => setFileLogo(e.target.files?.[0] || null)}
+                className="text-right"
+              />
+            </Field>
+            <Field>
+              <FieldLabel>صورة المركز</FieldLabel>
+              <Input
+                type="file"
+                accept="image/*"
+                onChange={(e) => setFileImage(e.target.files?.[0] || null)}
                 className="text-right"
               />
             </Field>

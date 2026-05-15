@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useGetCenters } from "@/hooks/useCenter";
+import { cn } from "@/lib/utils";
 
 const Centers = () => {
   const {
@@ -99,6 +100,16 @@ const Centers = () => {
                         {center.teachersCount}
                       </p>
                     </div>
+                    <Link
+                      href={`https://ratil-project.netlify.app/?cName=${center.name}`}
+                      target="_blank"
+                      className={cn(
+                        buttonVariants({ variant: "default", size: "lg" }),
+                        "col-span-2",
+                      )}
+                    >
+                      عرض موقع المركز
+                    </Link>
                   </div>
                 </CardContent>
               </Card>
