@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import { Loader2, ChevronRight, ChevronLeft, Search } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useGetCenters } from "@/hooks/useCenter";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 export default function CentersPage() {
   const [page, setPage] = useState(1);
@@ -97,6 +99,16 @@ export default function CentersPage() {
                           {center.teachersCount}
                         </p>
                       </div>
+                      <Link
+                        href={`https://ratil-project.netlify.app/?cName=${center.name}`}
+                        target="_blank"
+                        className={cn(
+                          buttonVariants({ variant: "default", size: "lg" }),
+                          "col-span-2",
+                        )}
+                      >
+                        عرض موقع المركز
+                      </Link>
                     </div>
                   </CardContent>
                 </Card>
