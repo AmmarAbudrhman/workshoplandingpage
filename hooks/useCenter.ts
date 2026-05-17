@@ -90,8 +90,10 @@ export const useCreateCenter = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["centers"] });
     },
-    onError: (error: AxiosError<{ message: string }>) => {
-      toast.error(error.response?.data?.message || "فشل إرسال الطلب");
+    onError: (error: AxiosError<{ errors: Record<string, string> }>) => {
+      toast.error(
+        JSON.stringify(error.response?.data?.errors) || "فشل إرسال الطلب",
+      );
     },
   });
 };

@@ -82,8 +82,6 @@ export function JoinCenterDialog() {
           form.reset();
           setFileImage(null);
           setFileLogo(null);
-        } else {
-          toast.error(data.message || "حدث خطأ ما");
         }
       },
     });
