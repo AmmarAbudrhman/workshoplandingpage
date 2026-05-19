@@ -26,7 +26,6 @@ import { Loader2 } from "lucide-react";
 
 const centerSchema = z.object({
   CenterName: z.string().min(1, "اسم المركز مطلوب"),
-  Subdomain: z.string().min(1, "النطاق الفرعي مطلوب"),
   PhoneNumber: z.string().optional(),
   Email: z
     .string()
@@ -49,7 +48,6 @@ export function JoinCenterDialog() {
     resolver: zodResolver(centerSchema),
     defaultValues: {
       CenterName: "",
-      Subdomain: "",
       PhoneNumber: "",
       Email: "",
       ManagerName: "",
@@ -62,7 +60,6 @@ export function JoinCenterDialog() {
   const onSubmit = (values: CenterFormValues) => {
     const formData = new FormData();
     formData.append("CenterName", values.CenterName);
-    formData.append("Subdomain", values.Subdomain);
     if (values.PhoneNumber) formData.append("PhoneNumber", values.PhoneNumber);
     if (values.Email) formData.append("Email", values.Email);
     formData.append("ManagerName", values.ManagerName);
@@ -112,7 +109,7 @@ export function JoinCenterDialog() {
           className="flex flex-col gap-4 text-right"
         >
           <FieldGroup>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
               <Controller
                 control={form.control}
                 name="CenterName"
@@ -121,22 +118,6 @@ export function JoinCenterDialog() {
                     <FieldLabel>اسم المركز *</FieldLabel>
                     <Input
                       placeholder="مركز التقوى"
-                      {...field}
-                      className="text-right"
-                      aria-invalid={!!fieldState.error}
-                    />
-                    <FieldError errors={[fieldState.error]} />
-                  </Field>
-                )}
-              />
-              <Controller
-                control={form.control}
-                name="Subdomain"
-                render={({ field, fieldState }) => (
-                  <Field data-invalid={!!fieldState.error}>
-                    <FieldLabel>النطاق الفرعي *</FieldLabel>
-                    <Input
-                      placeholder="al-taqwa"
                       {...field}
                       className="text-right"
                       aria-invalid={!!fieldState.error}
