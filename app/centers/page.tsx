@@ -117,11 +117,12 @@ export default function CentersPage() {
                     </div>
                   </CardContent>
                 </Card>
-              ))}
-            </div>
-          </>
-        )}
-      </div>
+              );
+            })}
+          </div>
+        </>
+      )}
     </div>
-  );
+  </div>
+);
 }
