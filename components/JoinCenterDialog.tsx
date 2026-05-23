@@ -25,7 +25,7 @@ import { useCreateCenter } from "@/hooks/useCenter";
 import { Loader2 } from "lucide-react";
 
 const centerSchema = z.object({
-  CenterName: z.string().min(1, "اسم المركز مطلوب"),
+  CenterName: z.string().min(1, "اسم الورشة مطلوب"),
   PhoneNumber: z.string().optional(),
   Email: z
     .string()
@@ -35,6 +35,9 @@ const centerSchema = z.object({
   ManagerName: z.string().min(1, "اسم المدير مطلوب"),
   Password: z.string().min(6, "كلمة المرور يجب أن تكون 6 أحرف على الأقل"),
   LogoImage: z.any().optional(),
+  Plan: z.enum(["Free", "Paid"], {
+    required_error: "يرجى اختيار باقة الاشتراك",
+  }),
 });
 
 type CenterFormValues = z.infer<typeof centerSchema>;
@@ -52,6 +55,7 @@ export function JoinCenterDialog() {
       Email: "",
       ManagerName: "",
       Password: "",
+      Plan: "Free",
     },
   });
 
@@ -64,6 +68,7 @@ export function JoinCenterDialog() {
     if (values.Email) formData.append("Email", values.Email);
     formData.append("ManagerName", values.ManagerName);
     formData.append("Password", values.Password);
+    formData.append("Plan", values.Plan);
     if (fileLogo) {
       formData.append("LogoImage", fileLogo);
     }
@@ -101,7 +106,7 @@ export function JoinCenterDialog() {
         <DialogHeader>
           <DialogTitle className="text-right">طلب الانضمام</DialogTitle>
           <DialogDescription className="text-right">
-            قم بتعبئة البيانات التالية لطلب إنشاء مركز جديد على المنصة
+            قم بتعبئة البيانات التالية لطلب إنشاء ورشة جديدة على المنصة
           </DialogDescription>
         </DialogHeader>
         <form
@@ -115,9 +120,9 @@ export function JoinCenterDialog() {
                 name="CenterName"
                 render={({ field, fieldState }) => (
                   <Field data-invalid={!!fieldState.error}>
-                    <FieldLabel>اسم المركز *</FieldLabel>
+                    <FieldLabel>اسم الورشة *</FieldLabel>
                     <Input
-                      placeholder="مركز التقوى"
+                      placeholder="ورشة الاتقان الهندسية"
                       {...field}
                       className="text-right"
                       aria-invalid={!!fieldState.error}
@@ -193,6 +198,25 @@ export function JoinCenterDialog() {
                     className="text-right"
                     aria-invalid={!!fieldState.error}
                   />
+                  <FieldError errors={[fieldState.error]} />
+                </Field>
+              )}
+            />
+
+            <Controller
+              control={form.control}
+              name="Plan"
+              render={({ field, fieldState }) => (
+                <Field data-invalid={!!fieldState.error}>
+                  <FieldLabel>باقة الاشتراك *</FieldLabel>
+                  <select
+                    {...field}
+                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-right appearance-none"
+                    aria-invalid={!!fieldState.error}
+                  >
+                    <option value="Free">الباقة المجانية (3 أشهر)</option>
+                    <option value="Paid">الباقة السنوية (سنة كاملة)</option>
+                  </select>
                   <FieldError errors={[fieldState.error]} />
                 </Field>
               )}

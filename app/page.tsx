@@ -7,6 +7,7 @@ import {
   Journey,
   Team,
   Gallery,
+  Pricing,
 } from "@/components/SharedCentersPage";
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <Hero />
       <About />
       <Stats />
+      <Pricing />
       <Centers />
       <Features />
       <Journey />

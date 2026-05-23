@@ -30,7 +30,7 @@ export default function Header() {
             <LayoutDashboard size={20} strokeWidth={2.5} />
           </div>
           <span className="text-xl font-bold tracking-tight text-foreground">
-            نور
+            ورشتي
           </span>
         </Link>
 
@@ -39,7 +39,7 @@ export default function Header() {
             onClick={() => scrollToSection('about')}
             className="nav-link px-2 py-2 text-xs font-medium cursor-pointer"
           >
-            عن المنصة
+            عن ورشتي
           </button>
           <button
             onClick={() => scrollToSection('features')}
@@ -57,7 +57,7 @@ export default function Header() {
             onClick={() => scrollToSection('centers')}
             className="nav-link px-2 py-2 text-xs font-medium cursor-pointer"
           >
-            المراكز
+            الورش
           </button>
           <button
             onClick={() => scrollToSection('journey')}

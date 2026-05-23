@@ -36,37 +36,37 @@ export default function Footer() {
               </div>
               <div className="flex flex-col">
                 <span className="text-2xl font-black tracking-tight text-foreground leading-none">
-                  نور
+                  ورشتي
                 </span>
                 <span className="text-[10px] font-medium text-muted-foreground uppercase tracking-widest mt-1">
-                  نظام الإدارة الذكي
+                  نظام الإدارة الهندسي الذكي
                 </span>
               </div>
             </Link>
             <p className="text-sm leading-relaxed text-muted-foreground/80 max-w-xs">
-              منصة رقمية متكاملة تهدف للارتقاء بإدارة مراكز تحفيظ القرآن الكريم
-              والجمعيات التعليمية من خلال تقنيات حديثة وحلول ذكية.
+              منصة رقمية متكاملة تهدف للارتقاء بإدارة الورش والمشاريع الهندسية
+              من خلال تقنيات حديثة وحلول ذكية.
             </p>
             <div className="flex flex-wrap gap-3">
               {[
                 {
                   icon: Facebook,
-                  href: "https://www.facebook.com/alfala7.center?mibextid=ZbWKwL",
+                  href: "#",
                   color: "hover:bg-blue-600",
                 },
                 {
                   icon: Twitter,
-                  href: "https://x.com/AlFalah7Center?s=09",
+                  href: "#",
                   color: "hover:bg-black",
                 },
                 {
                   icon: Instagram,
-                  href: "https://www.instagram.com/fala7center/?utm_source=qr&r=nametag",
+                  href: "#",
                   color: "hover:bg-pink-600",
                 },
                 {
                   icon: Whatsapp,
-                  href: "https://wa.me/967783049625",
+                  href: "https://wa.me/967734492595",
                   color: "hover:bg-green-600",
                 },
               ].map((social, i) => (
@@ -87,13 +87,13 @@ export default function Footer() {
           <div>
             <h4 className="text-foreground font-bold mb-8 flex items-center gap-2">
               <span className="h-4 w-1 bg-primary rounded-full" />
-              المنصة
+              عن ورشتي
             </h4>
             <ul className="space-y-4 text-sm">
               {[
-                { name: "عن نور", href: "/#about" },
+                { name: "عن ورشتي", href: "/#about" },
                 { name: "المميزات", href: "/#features" },
-                { name: "الاشتراكات", href: "/#hero" },
+                { name: "الاشتراكات", href: "/#pricing" },
               ].map((link) => (
                 <li key={link.name}>
                   <a
@@ -116,7 +116,7 @@ export default function Footer() {
             </h4>
             <div className="space-y-5 text-sm ">
               <a
-                href="tel:+967783049625"
+                href="tel:+967734492595"
                 className="group flex text-right items-center flex-row-reverse  gap-4 p-3 rounded-2xl bg-muted/30 transition-all hover:bg-muted/50 border border-transparent hover:border-primary/20"
                 dir="ltr"
               >
@@ -128,7 +128,7 @@ export default function Footer() {
                     اتصل بنا
                   </span>
                   <span className="font-semibold text-foreground">
-                    +967 783049625
+                    +967 734492595
                   </span>
                 </div>
               </a>
@@ -162,9 +162,9 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="mt-10 flex flex-col items-center justify-center gap-6 border-t border-border/50 pt-8 md:flex-row">
           <p className="text-xs text-muted-foreground">
-            &copy; {year} <span className="font-bold text-foreground">نور</span>{" "}
+            &copy; {year} <span className="font-bold text-foreground">ورشتي</span>{" "}
             — جميع الحقوق محفوظة. تم التطوير بواسطة{" "}
-            <span className="font-semibold text-primary">فريق نور</span>
+            <span className="font-semibold text-primary">فريق ورشتي</span>
           </p>
         </div>
       </div>

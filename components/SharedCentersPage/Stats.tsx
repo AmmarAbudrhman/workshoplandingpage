@@ -8,22 +8,22 @@ const Stats = () => {
 
   const stats = [
     {
-      label: "مراكز نشطة",
+      label: "ورش نشطة",
       value: statsData?.data.centersCount.toString() || "0",
       icon: <Building2 className="w-6 h-6" />,
     },
     {
-      label: "طالب وطالبة",
+      label: "مهندس وفني",
       value: statsData?.data.studentsCount.toString() || "0",
       icon: <Users2 className="w-6 h-6" />,
     },
     {
-      label: "معلم ومعلمة",
+      label: "معدات ومشاريع",
       value: statsData?.data.teachersCount.toString() || "0",
       icon: <GraduationCap className="w-6 h-6" />,
     },
     {
-      label: "خاتم وخاتمة",
+      label: "صيانة منجزة",
       value: statsData?.data.memorizersCount.toString() || "0",
       icon: <BookOpen className="w-6 h-6" />,
     },

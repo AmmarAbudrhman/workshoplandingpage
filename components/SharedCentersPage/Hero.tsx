@@ -13,13 +13,11 @@ const Hero = () => {
 
       <div className="relative z-10">
         <h1 className="text-4xl md:text-6xl font-extrabold text-foreground mb-6 leading-tight animate-in fade-in slide-in-from-bottom-8 duration-700">
-          منصة <span className="text-primary"> نور</span> — إدارة ذكية لحلقات
-          القرآن
+          منصة <span className="text-primary"> ورشتي</span> — إدارة هندسية متكاملة
         </h1>
 
         <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-10 animate-in fade-in slide-in-from-bottom-8 delay-200 duration-700">
-          منصة رقمية تساعد المراكز التعليمية على إدارة الحلقات والطلاب والمعلمين
-          بكفاءة عالية مع تقارير متقدمة.
+          المنصة الرقمية الأولى لإدارة الورش والمشاريع الهندسية بكفاءة عالية، تتبع الصيانة، وإدارة الفرق والعملاء بذكاء.
         </p>
 
         <div className="flex flex-wrap justify-center gap-4 animate-in fade-in slide-in-from-bottom-8 delay-300 duration-700">
@@ -32,7 +30,7 @@ const Hero = () => {
                 ?.scrollIntoView({ behavior: "smooth" })
             }
           >
-            عرض المراكز
+            عرض الورش
           </Button>
           <JoinCenterDialog />
         </div>
